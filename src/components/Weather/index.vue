@@ -19,9 +19,6 @@ import { onMounted, reactive, h } from "vue";
 import { getAdcode, getWeather } from "@/api";
 import { Error } from "@icon-park/vue-next";
 
-// 高德开发者 Key
-let mainKey = import.meta.env.VITE_WEATHER_KEY;
-
 // 天气数据
 let weatherData = reactive({
   adCode: {
@@ -39,8 +36,7 @@ let weatherData = reactive({
 // 获取天气数据
 const getWeatherData = () => {
   // 获取地理位置信息
-  if (!mainKey) return onError("请配置天气 Key");
-  getAdcode(mainKey)
+  getAdcode()
     .then((res) => {
       if (res.status) {
         weatherData.adCode = {
@@ -48,7 +44,7 @@ const getWeatherData = () => {
           adcode: res.adcode,
         };
         // 获取天气信息
-        getWeather(mainKey, weatherData.adCode.adcode)
+        getWeather(weatherData.adCode.adcode)
           .then((res) => {
             if (res.status) {
               weatherData.weather = {
