@@ -31,18 +31,19 @@
 import { ref } from "vue";
 import { Icon } from "@vicons/utils";
 import {
-  Link,
-  Blog,
-  CompactDisc,
   Cloud,
+  Flask, 
   Compass,
-  Book,
-  Fire,
 } from "@vicons/fa";
 
 // 网站链接数据
 // 建议不要超出6个，若需要超出请自行调整样式
 let linksData = [
+  {
+    icon: Flask,
+    name: "状态",
+    link: "https://ward.mike-hd123.tk/",
+  },
   {
     icon: Cloud,
     name: "网盘",
